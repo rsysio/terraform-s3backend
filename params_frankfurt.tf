@@ -9,7 +9,6 @@ resource "aws_ssm_parameter" "s3_bucket_frankfurt" {
   type      = "String"
   value     = "${aws_s3_bucket.terraform_state.id}"
   overwrite = true
-  tags      = "${var.tags}"
 }
 
 resource "aws_ssm_parameter" "dynamodb_table_frankfurt" {
@@ -18,7 +17,6 @@ resource "aws_ssm_parameter" "dynamodb_table_frankfurt" {
   type      = "String"
   value     = "${aws_dynamodb_table.terraform_statelock.id}"
   overwrite = true
-  tags      = "${var.tags}"
 }
 
 resource "aws_ssm_parameter" "backend_region_frankfurt" {
@@ -27,5 +25,4 @@ resource "aws_ssm_parameter" "backend_region_frankfurt" {
   type      = "String"
   value     = "${data.aws_region.current.name}"
   overwrite = true
-  tags      = "${var.tags}"
 }
