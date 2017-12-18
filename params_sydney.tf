@@ -1,10 +1,10 @@
 provider "aws" {
-  alias  = "dublin"
-  region = "eu-west-1"
+  alias  = "sydney"
+  region = "ap-southeast-2"
 }
 
-resource "aws_ssm_parameter" "s3_bucket_dublin" {
-  provider  = "aws.dublin"
+resource "aws_ssm_parameter" "s3_bucket_sydney" {
+  provider  = "aws.sydney"
   name      = "${var.param_tfstate_s3_bucket}"
   type      = "String"
   value     = "${aws_s3_bucket.terraform_state.id}"
@@ -12,8 +12,8 @@ resource "aws_ssm_parameter" "s3_bucket_dublin" {
   tags      = "${var.tags}"
 }
 
-resource "aws_ssm_parameter" "dynamodb_table_dublin" {
-  provider  = "aws.dublin"
+resource "aws_ssm_parameter" "dynamodb_table_sydney" {
+  provider  = "aws.sydney"
   name      = "${var.param_tfstate_dynamodb}"
   type      = "String"
   value     = "${aws_dynamodb_table.terraform_statelock.id}"
@@ -21,8 +21,8 @@ resource "aws_ssm_parameter" "dynamodb_table_dublin" {
   tags      = "${var.tags}"
 }
 
-resource "aws_ssm_parameter" "backend_region_dublin" {
-  provider  = "aws.dublin"
+resource "aws_ssm_parameter" "backend_region_sydney" {
+  provider  = "aws.sydney"
   name      = "${var.param_tfstate_region}"
   type      = "String"
   value     = "${data.aws_region.current.name}"
