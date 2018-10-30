@@ -3,9 +3,7 @@ provider "aws" {
 }
 
 terraform {
-  required_version = ">= 0.11.0"
+  required_version = ">= 0.11.8"
 }
 
-data "aws_region" "current" {
-  current = true
-}
+data "aws_region" "current" {}
